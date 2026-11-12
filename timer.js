@@ -3,6 +3,7 @@ var WORK_SECONDS = 25 * 60;
 var BREAK_SECONDS = 5 * 60;
 var remaining = WORK_SECONDS;
 var mode = 'work';
+var sessions = 0;
 var timerId = null;
 
 function fmt(seconds) {
@@ -13,7 +14,7 @@ function fmt(seconds) {
 
 function render() {
   document.getElementById('time').textContent = fmt(remaining);
-  document.getElementById('mode').textContent = mode === 'work' ? 'Work' : 'Break';
+  document.getElementById('mode').textContent = (mode === 'work' ? 'Work' : 'Break') + ' — ' + sessions + ' session' + (sessions === 1 ? '' : 's') + ' done';
 }
 
 function tick() {
@@ -23,6 +24,7 @@ function tick() {
     timerId = null;
     document.getElementById('start').textContent = 'Start';
     if (mode === 'work') {
+      sessions += 1;
       mode = 'break';
       remaining = BREAK_SECONDS;
     } else {

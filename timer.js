@@ -17,11 +17,21 @@ function render() {
   document.getElementById('mode').textContent = (mode === 'work' ? 'Work' : 'Break') + ' — ' + sessions + ' session' + (sessions === 1 ? '' : 's') + ' done';
 }
 
+function beep() {
+  var ctx = new (window.AudioContext || window.webkitAudioContext)();
+  var osc = ctx.createOscillator();
+  osc.connect(ctx.destination);
+  osc.frequency.value = 880;
+  osc.start();
+  osc.stop(ctx.currentTime + 0.4);
+}
+
 function tick() {
   remaining -= 1;
   if (remaining <= 0) {
     clearInterval(timerId);
     timerId = null;
+    beep();
     document.getElementById('start').textContent = 'Start';
     if (mode === 'work') {
       sessions += 1;

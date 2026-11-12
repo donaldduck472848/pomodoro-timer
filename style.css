@@ -1,0 +1,4 @@
+body { font-family: system-ui, sans-serif; text-align: center; background: #fdf6ec; }
+#time { font-size: 72px; font-variant-numeric: tabular-nums; margin: 24px 0 8px; }
+#mode { font-size: 20px; color: #666; margin-bottom: 16px; }
+button { font-size: 18px; padding: 10px 22px; margin: 0 6px; cursor: pointer; }

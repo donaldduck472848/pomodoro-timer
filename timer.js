@@ -51,7 +51,7 @@ document.getElementById('start').addEventListener('click', function () {
     timerId = null;
     this.textContent = 'Start';
   } else {
-    timerId = setInterval(tick, 100);
+    timerId = setInterval(tick, 1000);
     this.textContent = 'Pause';
   }
 });
